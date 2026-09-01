@@ -14,7 +14,7 @@ MEM_WARNING = 70
 MEM_CRITICAL = 90
 
 DISK_WARNING = 80
-DISK_CRITICAL = 95
+DISK_CRITICAL = 99
 
 
 # ==============================
