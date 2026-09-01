@@ -29,4 +29,36 @@ pipeline {
             }
         }
     }
+
+    post {
+        unstable {
+            emailext(
+                to: 'ponmanianandakumar9363@gmail.com',
+                subject: 'WARNING: Server Health Check',
+                body: '''WARNING: The server health check detected a WARNING condition.
+
+Please check the Jenkins console output for CPU, Memory and Disk usage.
+
+Jenkins Job: ${JOB_NAME}
+Build Number: ${BUILD_NUMBER}
+Build URL: ${BUILD_URL}
+'''
+            )
+        }
+
+        failure {
+            emailext(
+                to: 'ponmanianandakumar9363@gmail.com',
+                subject: 'CRITICAL: Server Health Check',
+                body: '''CRITICAL: The server health check detected a CRITICAL condition.
+
+Please check the Jenkins console output for CPU, Memory and Disk usage.
+
+Jenkins Job: ${JOB_NAME}
+Build Number: ${BUILD_NUMBER}
+Build URL: ${BUILD_URL}
+'''
+            )
+        }
+    }
 }
